@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Stroke Predictor</title>
+<style>
+
+.container{
+	background-image: url("https://www.mmcoakridge.com/wp-content/uploads/sites/14/2020/07/Brain-Attack-Stroke-iStock-1168179084.jpg");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    width: 100%;
+    max-width: 1500px;
+}
+
+.info-wrapper{
+	width: 60%;
+    background-color: #edf0f747;
+    padding: 55px 45px;
+    margin: 0 auto;
+    color: black;
+    margin-bottom: 10px;
+}
+
+select,input{
+	height: 100%;
+    padding: 6px;
+    width: 80%;
+}
+
+tr{
+	margin-bottom: 5px  !important;
+}
+
+h1, body{
+	margin: 0;
+}
+
+h1{
+	text-align: center;
+	font-family: 'Orelega One', cursive;
+	font-size: 55px;
+    color : black;
+    background-color:#d6dcff59;
+    width: 50%;
+    margin-left: 24%;
+    padding-top: 3%;
+}
+
+h3{
+	text-align: center;
+	font-family: 'Orelega One', cursive;
+    color : black;
+    background-color:#d6dcff59;
+    width: 30%;
+    margin-left: 34%;
+}
+
+h4{
+	text-align: center;
+	font-family: 'Orelega One', cursive;
+	font-size: 25px;
+    color : black;
+	background-color: #0d71715c
+}
+
+.btnfos {
+  border: 0 solid;
+  box-shadow: inset 0 0 20px rgba(255, 255, 255, 0);
+  outline: 1px solid;
+  outline-color: rgba(255, 255, 255, 0);
+  outline-offset: 0px;
+  text-shadow: none;
+  -webkit-transition: all 1250ms cubic-bezier(0.19, 1, 0.22, 1);
+          transition: all 1250ms cubic-bezier(0.19, 1, 0.22, 1);
+  outline-color: rgba(255, 255, 255, 0.5);
+  outline-offset: 0px;
+}
+
+.btnfos:hover {
+  border: 1px solid;
+  box-shadow: inset 0 0 20px rgba(255, 255, 255, 0.5), 0 0 20px rgba(255, 255, 255, 0.2);
+  outline-offset: 15px;
+  outline-color: rgba(255, 255, 255, 0);
+  text-shadow: 1px 1px 2px #427388;
+}
+
+.display{
+	text-align: center;
+	font-family: 'Orelega One', cursive;
+	font-size: 25px;
+    color : black;
+	background-color: #0d71715c;
+}
+
+.predict{
+	text-align: center;
+	font-family: 'Orelega One', cursive;
+	font-size: 25px;
+    color : black;
+	background-color: #0d71715c
+}
+
+.predict a, .predict p{
+	display: inline-block;
+	padding-right: 8px;
+}
+
+
+td{
+	font-size: 25px;
+	color: #feffda;
+}
+</style>
+</head>
+
+
+<body>
+<div class="container">
+    <h1>Stroke Predictor</h1>
+    <h3 style="font-family: 'Lobster', cursive; padding-top:0%; text-align: center;">Stay aware... Stay Healthy...</h3>
+<form action="{{url_for('predict')}}" class="info-wrapper" method="POST">
+	<table  cellpadding="5%" cellspacing="5px"; style="margin: auto;">
+
+	<tr>
+	<td>Gender:</td>
+	<td>
+	<select id="gender" name="gender" required="required">
+    <option value=0>Male</option>
+    <option value=1>Female</option>
+	</select>
+	</td>
+	</tr>
+
+	<tr>
+	<td>Age:</td>
+	<td>
+	<input type="text" name="age" placeholder="Age" required="required" />
+	</td>
+	</tr>
+
+	<tr>
+	<td>Hypertension:</td>
+	<td>
+	<select id="ht" name="ht" required="required">
+    <option value=1>Yes</option>
+    <option value=0>No</option>
+	</select>
+	</td>
+	</tr>
+
+	<tr>
+	<td>Do you have any heart problems:</td>
+	<td>
+	<select id="heart" name="heart" required="required">
+    <option value=1>Yes</option>
+    <option value=0>No</option>
+	</select>
+	</td>
+	</tr>
+
+	<tr>
+	<td>Have you ever been married?</td>
+	<td>
+	<select id="married" name="married" required="required">
+    <option value=1>Yes</option>
+    <option value=0>No</option>
+	</select>
+	</td>
+	</tr>
+	
+	<tr>
+	<td>Type of work: </td>
+	<td>
+	<select id="wt" name="wt" required="required">
+    <option value=0>Private</option>
+    <option value=1>Self-Employed</option>
+    <option value=2>Government Job</option>
+    <option value=3>At home</option>
+    <option value=4>Never Worked</option>
+	</select>
+	</td>
+	</tr>
+
+	<tr>
+	<td>Residence: </td>
+	<td>
+	<select id="residence" name="residence" required="required">
+    <option value=1>Urban</option>
+    <option value=0>Rural</option>
+	</select>
+	</td>
+	</tr>
+
+	<tr>
+	<td>Average Glucose Level</td>
+	<td>
+	<input type="text" name="agl" placeholder="Average Glucose Level" required="required" />
+	</td>
+	</tr>
+
+
+	<tr>
+	<td>BMI:</td>
+	<td>
+	<input type="text" name="bmi" placeholder="BMI" required="required" />
+	</td>
+	</tr>
+
+	<tr>
+	<td>Smoking Status: </td>
+	<td>
+	<select id="ss" name="ss" required="required">
+    <option value=0>Formerly Smoked</option>
+    <option value=1>Never Smoked</option>
+    <option value=2>Smokes</option>
+    <option value=3>Unknown</option>
+	</select>
+	</td>
+	</tr>
+
+</table>
+
+	<br>
+	<br>
+	<div class="button" style="margin-left: 43%;">
+        <button class="btnfos" style="width: 160px; height: 50px; font-size: 20px;" type="Submit" id="submit">Submit</button>
+    </div>
+
+</form>
+</div>
+
+<h4>{{ prediction_text }}</h4>
+{% if prediction == 1%}
+<div class='predict'>
+	<a href=https://www.apollo247.com/specialties/neurology> Click here </a><p>to book an appointment with Doctor</p></div>
+
+{% elif prediction==0%}
+<div class='predict'>
+	<a href=https://www.apollo247.com/specialties/neurology> Click here </a><p>to book an appointment with Doctor</p></div>
+
+{% endif %}
+
+</body>
+</html>
