@@ -15,3 +15,4 @@ Input features:
 9) BMI
 10) Smoking Status
 
+I have used Python's Flask framework to deploy the model by creating a website using HTML & CSS + Bootstrap.
